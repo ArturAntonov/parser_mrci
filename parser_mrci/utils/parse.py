@@ -7,7 +7,7 @@ from lxml import html
 
 from parser_mrci.utils.files_n_folders import create_folder, write_html_file, read_file
 from parser_mrci.utils.paths import url_join, transform_to_path
-from parser_mrci.utils.utils import extract_year, extract_day, valid_html_tree
+from parser_mrci.utils.utils import extract_year, extract_day, valid_html_tree, is_block_end
 
 
 def parse_day_html(file, tickers):
@@ -53,7 +53,7 @@ def parse_root_page(root_page, ohlc_page):
     filename = '%s.html' % (str(ohlc_page))
     path = os.path.join(foldername, filename)
     write_html_file(path, r.text)
-    return (foldername, filename, path)
+    return foldername, filename, path
 
 
 # test
